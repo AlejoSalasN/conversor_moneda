@@ -22,8 +22,7 @@ public class Consulta {
             Gson gson = new Gson();
             JsonObject jsonObject = gson.fromJson(responseBody, JsonObject.class);
             JsonObject conversionRates = jsonObject.getAsJsonObject("conversion_rates");
-            Float precio = Float.parseFloat(conversionRates.get(destino).toString());
-            System.out.println(precio);
+            float precio = Float.parseFloat(conversionRates.get(destino).toString());
             return (valor * precio);
         } catch (Exception e) {
             throw new RuntimeException("No existe el dato.");
