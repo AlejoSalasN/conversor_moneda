@@ -1,4 +1,11 @@
+import com.google.gson.*;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class Monedas {
@@ -28,6 +35,7 @@ public class Monedas {
         while (!sw) {
             System.out.println("**************************************");
             System.out.println("""
+                      0) Ver Historial
                       1) Dólar
                       2) Euro
                       3) Real Brasileño
@@ -54,5 +62,41 @@ public class Monedas {
             }
         }
         return valor;
+    }
+
+    public void guardar (MonedasOmdb conversiones) {
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .create();
+
+        JsonArray jsonArray;
+
+        try (FileReader reader = new FileReader("conversiones.json")) {
+            jsonArray = JsonParser.parseReader(reader).getAsJsonArray();
+        } catch (Exception e) {
+            jsonArray = new JsonArray();
+        }
+
+        JsonElement jsonElement = gson.toJsonTree(conversiones);
+        jsonArray.add(jsonElement);
+
+        try (FileWriter writer = new FileWriter("conversiones.json")) {
+            gson.toJson(jsonArray, writer);
+            System.out.println("Datos añadidos correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void mostrar() {
+
+        try (FileReader reader = new FileReader("conversiones.json")) {
+            JsonArray jsonArray = JsonParser.parseReader(reader).getAsJsonArray();
+            for (JsonElement element : jsonArray) {
+                System.out.println(element);
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

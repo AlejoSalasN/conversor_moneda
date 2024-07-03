@@ -1,0 +1,32 @@
+[
+  {
+    "Origen": "USD",
+    "Destino": "EUR",
+    "Conversion": "USD 10.0 : EUR 9.309999",
+    "Fecha": "03-07-2024 01:14:48"
+  },
+  {
+    "Origen": "PEN",
+    "Destino": "BOB",
+    "Conversion": "PEN 10.0 : BOB 18.01",
+    "Fecha": "03-07-2024 01:15:08"
+  },
+  {
+    "Origen": "BOB",
+    "Destino": "USD",
+    "Conversion": "BOB 40.5 : USD 5.86035",
+    "Fecha": "03-07-2024 01:15:23"
+  },
+  {
+    "Origen": "BOB",
+    "Destino": "USD",
+    "Conversion": "BOB 35.0 : USD 5.0645003",
+    "Fecha": "03-07-2024 01:28:24"
+  },
+  {
+    "Origen": "VES",
+    "Destino": "EUR",
+    "Conversion": "VES 8000.0 : EUR 204.31999",
+    "Fecha": "03-07-2024 01:38:41"
+  }
+]
